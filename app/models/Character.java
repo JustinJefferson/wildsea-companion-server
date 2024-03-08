@@ -1,6 +1,10 @@
 package models;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
 import models.dataModels.BackgroundData;
+
+import java.util.List;
 
 public class Character extends GenericModel {
     private String displayName;
@@ -12,12 +16,22 @@ public class Character extends GenericModel {
     private BackgroundData post;
     private String customPost;
     // Milestones
-    // Drives
-    // Mires
-    // Edges
-    // Skills
-    // Languages
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "character")
+    private List<Drive> drives;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "character")
+    private List<Edge> edges;
+
+    // Skills, Languages
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "character")
+    private List<RankedAbility> rankedAbilities;
+
     // Resources
-    // Aspects
-    // Temporary Tracks
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "character")
+    private List<ResourceItem> resourceItems;
+
+    // Mires, Aspects, Temporary Tracks
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "character")
+    private List<Track> tracks;
 }

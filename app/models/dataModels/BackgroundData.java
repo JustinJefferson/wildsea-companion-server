@@ -6,7 +6,8 @@ public class BackgroundData extends GenericModel {
     public enum Type {
         BLOODLINE,
         ORIGIN,
-        POST
+        POST,
+        CUSTOM
     }
 
     private String displayName;
