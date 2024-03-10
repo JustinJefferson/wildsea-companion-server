@@ -15,7 +15,10 @@ public class Character extends GenericModel {
     private String customOrigin;
     private BackgroundData post;
     private String customPost;
+
     // Milestones
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "character")
+    private List<Milestone> milestones;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "character")
     private List<Drive> drives;
